@@ -2,7 +2,7 @@
   "name": "hotel-management-system",
   "version": "1.0.0",
   "engines": {
-    "node": "18"
+    "node": "24.1.0"
   },
   "scripts": {
     "start": "node backend/server.js"
