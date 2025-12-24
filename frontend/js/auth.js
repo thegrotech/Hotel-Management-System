@@ -1,3 +1,25 @@
+// Debug: Check if API_CONFIG is loaded
+console.log('🔥 Auth.js loading...');
+console.log('🔍 API_CONFIG exists:', typeof API_CONFIG !== 'undefined');
+console.log('🔍 API_CONFIG.getUrl:', typeof API_CONFIG?.getUrl);
+
+if (typeof API_CONFIG === 'undefined') {
+    console.error('❌ CRITICAL: API_CONFIG is undefined!');
+    console.error('   Make sure config.js is loaded BEFORE auth.js');
+    console.error('   Current scripts:', document.querySelectorAll('script[src]').length);
+    
+    // Emergency fallback
+    window.API_CONFIG = {
+        getUrl: (endpoint) => endpoint,
+        getAuthHeaders: (token) => {
+            const headers = { 'Content-Type': 'application/json' };
+            if (token) headers['Authorization'] = `Bearer ${token}`;
+            return headers;
+        }
+    };
+    console.log('⚠️ Created emergency API_CONFIG');
+}
+
 // Password Toggle Functionality
 class PasswordToggle {
     constructor(passwordInputId, toggleButtonId) {
@@ -260,4 +282,5 @@ style.textContent = `
 `;
 
 document.head.appendChild(style);
+
 
