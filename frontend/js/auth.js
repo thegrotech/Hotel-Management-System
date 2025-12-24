@@ -104,7 +104,7 @@ class AuthManager {
     // Login function
     async login(username, password) {
         try {
-            const response = await fetch('http://localhost:3000/api/auth/login', {
+            const response = await fetch(API_CONFIG.getUrl('/api/auth/login'), {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -271,4 +271,5 @@ style.textContent = `
         border: 0;
     }
 `;
+
 document.head.appendChild(style);
