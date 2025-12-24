@@ -13,7 +13,8 @@
     "reset-guests": "node db-reset.js --guests",
     "reset-rooms": "node db-reset.js --rooms",
     "reset-floors": "node db-reset.js --floors",
-    "db-help": "node db-reset.js --help"
+    "db-help": "node db-reset.js --help",
+    "vercel-build": "echo 'Building for Vercel...'"
   },
   "dependencies": {
     "express": "^4.18.2",
@@ -27,4 +28,5 @@
   "devDependencies": {
     "nodemon": "^3.0.1"
   }
+
 }
