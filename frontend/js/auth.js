@@ -161,22 +161,9 @@ class AuthManager {
     }
 
     // Get authentication headers for API requests
-    getAuthHeaders() {
-        const headers = {
-            'Content-Type': 'application/json'
-        };
-        
-        if (this.token) {
-            headers['Authorization'] = `Bearer ${this.token}`;
-        }
-        
-        // For development, skip auth if needed
-        if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-            headers['skip-auth'] = 'true';
-        }
-        
-        return headers;
-    }
+getAuthHeaders() {
+    return API_CONFIG.getAuthHeaders(this.token);
+}
 
     // Check if user is authenticated
     checkAuth() {
@@ -273,3 +260,4 @@ style.textContent = `
 `;
 
 document.head.appendChild(style);
+
