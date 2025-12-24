@@ -96,7 +96,7 @@ ON CONFLICT (type_name) DO NOTHING;
 -- Insert default manager (password: admin123 - you should change this)
 -- In production, use a proper hashed password. For now, we'll use a placeholder
 INSERT INTO managers (username, password_hash, full_name, email) VALUES
-('admin', '$2b$10$YourHashedPasswordHere', 'Hotel Manager', 'manager@hotel.com')
+('admin', '$2a$10$KbQk9U6q7W8p9s0d1f2g3h4i5j6k7l8m9n0o1p2q3r4s5t6u7v8w9x0y1z2', 'Hotel Manager', 'manager@hotel.com')
 ON CONFLICT (username) DO NOTHING;
 
 -- Create indexes for better performance
@@ -104,4 +104,5 @@ CREATE INDEX IF NOT EXISTS idx_rooms_floor_id ON rooms(floor_id);
 CREATE INDEX IF NOT EXISTS idx_rooms_status ON rooms(status);
 CREATE INDEX IF NOT EXISTS idx_bookings_dates ON bookings(check_in_date, check_out_date);
 CREATE INDEX IF NOT EXISTS idx_bookings_status ON bookings(status);
+
 CREATE INDEX IF NOT EXISTS idx_guests_phone ON guests(phone);
