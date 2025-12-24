@@ -44,8 +44,13 @@ app.use((err, req, res, next) => {
     res.status(500).json({ error: 'Something went wrong!' });
 });
 
-// Start server
-app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
-    console.log(`API available at http://localhost:${PORT}/api`);
-});
+// For Vercel deployment - export the app
+module.exports = app;
+
+// Only listen locally if not in Vercel environment
+if (require.main === module) {
+    app.listen(PORT, () => {
+        console.log(`Server running on http://localhost:${PORT}`);
+        console.log(`API available at http://localhost:${PORT}/api`);
+    });
+}
